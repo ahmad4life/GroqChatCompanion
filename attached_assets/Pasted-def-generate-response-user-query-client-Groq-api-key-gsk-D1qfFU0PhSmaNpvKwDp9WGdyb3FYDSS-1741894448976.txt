@@ -1,0 +1,37 @@
+def generate_response(user_query):
+
+  client = Groq(api_key = "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")
+  chat_completion = client.chat.completions.create(
+      #
+      # Required parameters
+      #
+      messages=[
+          # Set an optional system message. This sets the behavior of the
+          # assistant and can be used to provide specific instructions for
+          # how it should behave throughout the conversation.
+          {
+              "role": "system",
+              "content": "you are a helpful assistant."
+          },
+          # Set a user message for the assistant to respond to.
+          {
+              "role": "user",
+              "content": user_query,
+          }
+      ],
+      # The language model which will generate the completion.
+      model="llama-3.3-70b-versatile",
+      temperature=0.5,
+      max_completion_tokens=1024,
+      top_p=1,
+      stop=None,
+      stream=False,
+  )
+  # Print the completion returned by the LLM.
+  return chat_completion.choices[0].message.content
+
+here is my response generation script. please you have to use this script as it is in your flask. now your task is to design chatWidget. which contains prompt feild at the bottom of the page. now user response will be shown on the rigt side, and AI generated response which is generating from our function will be shown of left side. please design a very beautiful chatwidget using html, css, bootstrap and javascript. show me your capabilities. here is my function script: def generate_response(user_query):
+client = Groq(api_key = "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")
+chat_completion = client.chat.completions.create( # # Required parameters # messages=[ # Set an optional system message. This sets the behavior of the # assistant and can be used to provide specific instructions for # how it should behave throughout the conversation. { "role": "system", "content": "you are a helpful assistant." }, # Set a user message for the assistant to respond to. { "role": "user", "content": user_query, } ],
+# The language model which will generate the completion. model="llama-3.3-70b-versatile", temperature=0.5, max_completion_tokens=1024, top_p=1, stop=None, stream=False, )
+# Print the completion returned by the LLM. return chat_completion.choices[0].message.content
